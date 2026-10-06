@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IES Padre Anchieta - San Cristóbal de La Laguna</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            700: '#102a43',
+                            800: '#0b1b2b',
+                            900: '#06111c',
+                        },
+                        brand: {
+                            blue: '#1d4ed8',
+                            darkBlue: '#1e3a8a',
+                            gold: '#f59e0b',
+                            goldHover: '#d97706',
+                            light: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-hero {
+            background: linear-gradient(135deg, rgba(16, 42, 67, 0.92) 0%, rgba(30, 58, 138, 0.88) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .tab-active {
+            border-bottom: 3px solid #f59e0b;
+            color: #1d4ed8;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Name -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-navy-700 text-brand-gold rounded-xl flex items-center justify-center font-extrabold text-2xl shadow-md group-hover:scale-105 transition-transform">
+                        PA
+                    </div>
+                    <div>
+                        <span class="block text-xl font-bold text-navy-700 leading-none">IES Padre Anchieta</span>
+                        <span class="text-xs text-slate-500 font-medium">San Cristóbal de La Laguna</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-700">
+                    <a href="#inicio" class="hover:text-brand-blue transition-colors">Inicio</a>
+                    <a href="#nosotros" class="hover:text-brand-blue transition-colors">El Centro</a>
+                    <a href="#oferta" class="hover:text-brand-blue transition-colors">Oferta Educativa</a>
+                    <a href="#erasmus" class="hover:text-brand-blue transition-colors">Erasmus+</a>
+                    <a href="#actividades" class="hover:text-brand-blue transition-colors">Proyectos</a>
+                    <a href="#secretaria" class="hover:text-brand-blue transition-colors">Secretaría</a>
+                    <a href="#contacto" class="hover:text-brand-blue transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="https://www.gobiernodecanarias.org/educacion/pincel-ekade/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-brand-gold hover:bg-brand-goldHover text-navy-900 font-bold text-xs uppercase tracking-wider shadow-sm transition-all hover:shadow-md">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Pincel Ekade
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-navy-700 hover:bg-slate-100 focus:outline-none" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Inicio</a>
+            <a href="#nosotros" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">El Centro</a>
+            <a href="#oferta" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Oferta Educativa</a>
+            <a href="#erasmus" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Erasmus+</a>
+            <a href="#actividades" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Proyectos y Actividades</a>
+            <a href="#secretaria" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Secretaría</a>
+            <a href="#contacto" class="mobile-link block py-2 px-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Contacto</a>
+            <div class="pt-2">
+                <a href="https://www.gobiernodecanarias.org/educacion/pincel-ekade/" target="_blank" rel="noopener noreferrer" 
+                   class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-gold text-navy-900 font-bold text-sm">
+                    <i class="fa-solid fa-graduation-cap"></i> Acceso Pincel Ekade
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="gradient-hero text-white py-24 md:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <span class="inline-block px-3 py-1 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold font-semibold text-xs rounded-full uppercase tracking-widest mb-4">
+                    Gobierno de Canarias • San Cristóbal de La Laguna
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
+                    Educación de calidad, inclusión y visión internacional
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-200 font-light mb-8 leading-relaxed">
+                    Formamos personas con futuro desde la Educación Secundaria, Bachillerato y Formación Profesional en Tenerife.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#oferta" class="px-6 py-3.5 bg-brand-gold hover:bg-brand-goldHover text-navy-900 font-bold rounded-xl shadow-lg transition-all hover:scale-105 inline-flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Ver Oferta Educativa
+                    </a>
+                    <a href="#erasmus" class="px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-xl backdrop-blur-sm transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-globe"></i> Programa Erasmus+
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Quick stats bar -->
+        <div class="mt-16 border-t border-white/10 bg-black/20 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <span class="block text-3xl font-extrabold text-brand-gold">+30</span>
+                        <span class="text-xs text-slate-300 uppercase tracking-wider">Años Formando</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-extrabold text-brand-gold">4</span>
+                        <span class="text-xs text-slate-300 uppercase tracking-wider">Niveles Educativos</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-extrabold text-brand-gold">Erasmus+</span>
+                        <span class="text-xs text-slate-300 uppercase tracking-wider">Proyectos Europeos</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-extrabold text-brand-gold">PROA+</span>
+                        <span class="text-xs text-slate-300 uppercase tracking-wider">Refuerzo e Inclusión</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Conoce Nuestro Instituto</h2>
+                <p class="text-3xl font-extrabold text-navy-700 sm:text-4xl">Un entorno comprometido con la excelencia y la comunidad</p>
+                <div class="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-700 mb-3">Nuestra Misión</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Proporcionar una educación integral, promoviendo el espíritu crítico, la responsabilidad cívica y la preparación técnica de nuestro alumnado para los retos del siglo XXI.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-amber-100 text-brand-goldHover rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-700 mb-3">Valores del Centro</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Fomentamos la inclusión, el respeto, la tolerancia, la cultura del esfuerzo y el compromiso ambiental mediante proyectos activos e integradores.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-700 mb-3">Instalaciones</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Contamos con laboratorios de ciencias, aulas de informática equipadas, estudio de radio escolar, canchas deportivas y biblioteca adaptada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATIONAL OFFER SECTION -->
+    <section id="oferta" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Formación Integral</h2>
+                <p class="text-3xl font-extrabold text-navy-700 sm:text-4xl">Oferta Educativa Completa</p>
+                <p class="mt-4 text-slate-600">Explora las distintas etapas académicas que ofrecemos en el IES Padre Anchieta.</p>
+            </div>
+
+            <!-- Tabs Header -->
+            <div class="flex flex-wrap justify-center border-b border-slate-200 mb-8 gap-2" id="offer-tabs">
+                <button onclick="switchTab('eso')" id="tab-eso" class="tab-btn px-6 py-3 font-semibold text-sm transition-all tab-active">
+                    <i class="fa-solid fa-school mr-2"></i>E.S.O.
+                </button>
+                <button onclick="switchTab('bachillerato')" id="tab-bachillerato" class="tab-btn px-6 py-3 font-semibold text-sm text-slate-500 hover:text-navy-700 transition-all">
+                    <i class="fa-solid fa-graduation-cap mr-2"></i>Bachillerato
+                </button>
+                <button onclick="switchTab('fp')" id="tab-fp" class="tab-btn px-6 py-3 font-semibold text-sm text-slate-500 hover:text-navy-700 transition-all">
+                    <i class="fa-solid fa-briefcase mr-2"></i>Formación Profesional
+                </button>
+                <button onclick="switchTab('proa')" id="tab-proa" class="tab-btn px-6 py-3 font-semibold text-sm text-slate-500 hover:text-navy-700 transition-all">
+                    <i class="fa-solid fa-hands-holding-child mr-2"></i>Programa PROA+
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm min-h-[300px]">
+                
+                <!-- ESO Content -->
+                <div id="content-eso" class="tab-content block">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-navy-700 mb-4">Educación Secundaria Obligatoria (ESO)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Etapa clave estructurada de 1.º a 4.º de ESO orientada al desarrollo de competencias clave, aprendizaje cooperativo y adquisición de destrezas para la vida activa o académica posterior.
+                            </p>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Atención personalizada y orientación académica continua.
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Proyectos de digitalización educativa e idiomas.
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Optativas adaptadas a las inquietudes del alumnado.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-navy-50 rounded-xl p-6 border border-navy-100">
+                            <h4 class="font-bold text-navy-700 mb-3">Estructura por Niveles</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="p-3 bg-white rounded-lg shadow-sm font-medium">1.º y 2.º de ESO: Adquisición de hábitos y refuerzo base</div>
+                                <div class="p-3 bg-white rounded-lg shadow-sm font-medium">3.º de ESO: Optatividad inicial y diversificación</div>
+                                <div class="p-3 bg-white rounded-lg shadow-sm font-medium">4.º de ESO: Orientación hacia Bachillerato o Ciclos Formativos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachillerato Content -->
+                <div id="content-bachillerato" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-navy-700 mb-4">Bachillerato (1.º y 2.º Curso)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Preparación de alto nivel académico orientada al acceso a la Universidad (EBAU/PAU) y a Ciclos Formativos de Grado Superior.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-blue-50 border-l-4 border-brand-blue rounded-r-lg">
+                                    <h4 class="font-bold text-navy-700">Modalidad de Ciencias y Tecnología</h4>
+                                    <p class="text-xs text-slate-600 mt-1">Matemáticas, Física, Química, Biología y Dibujo Técnico.</p>
+                                </div>
+                                <div class="p-4 bg-amber-50 border-l-4 border-brand-gold rounded-r-lg">
+                                    <h4 class="font-bold text-navy-700">Modalidad de Humanidades y Ciencias Sociales</h4>
+                                    <p class="text-xs text-slate-600 mt-1">Historia, Economía, Geografía, Latín, Griego y Literatura.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                            <i class="fa-solid fa-award text-4xl text-brand-gold mb-3"></i>
+                            <h4 class="font-bold text-navy-700 mb-2">Preparación Académica</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                Tutores especializados acompañan al estudiante en la preparación de las pruebas EBAU con simulacros periódicos y orientación personalizada.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FP Content -->
+                <div id="content-fp" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-navy-700 mb-4">Formación Profesional (FP)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Titulaciones orientadas a la inserción laboral directa mediante una sólida formación teórica e inmersión práctica en empresas de Tenerife.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-brand-blue text-sm">FP Grado Básico:</span>
+                                    <p class="text-xs text-slate-600">Formación práctica inicial para la inclusión educativa y laboral.</p>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-brand-blue text-sm">Ciclos Formativos de Grado Medio:</span>
+                                    <p class="text-xs text-slate-600">Cualificación técnica profesional para incorporarse al sector productivo.</p>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                    <span class="font-bold text-brand-blue text-sm">Ciclos Formativos de Grado Superior:</span>
+                                    <p class="text-xs text-slate-600">Especialización de alto nivel con acceso directo a la Universidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-navy-700 text-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold text-brand-gold mb-2 text-lg"><i class="fa-solid fa-handshake-simple mr-2"></i>Prácticas en Empresas (FCT/Dual)</h4>
+                            <p class="text-sm text-slate-200 leading-relaxed">
+                                Convenios firmados con empresas de Tenerife para que nuestro alumnado complete su formación en entornos laborales reales y acceda a bolsas de empleo activa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROA+ Content -->
+                <div id="content-proa" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full mb-3">Programa Financiado</span>
+                            <h3 class="text-2xl font-bold text-navy-700 mb-4">Programa PROA+ / Apoyo Escolar</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                El IES Padre Anchieta desarrolla el programa PROA+ enfocado a reforzar el éxito educativo, prevenir el abandono escolar temprano y ofrecer apoyo socioeducativo en horario de tarde.
+                            </p>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Talleres de técnicas de estudio y organización.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Refuerzo en materias instrumentales (Matemáticas, Lengua, Idiomas).</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Fomento del buen clima de convivencia.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100 text-center">
+                            <i class="fa-solid fa-heart-hands text-4xl text-emerald-600 mb-3"></i>
+                            <h4 class="font-bold text-navy-700 mb-2">Atención a la Diversidad</h4>
+                            <p class="text-sm text-slate-600">
+                                Un equipo de orientación dedicado a garantizar la inclusión y la adaptación pedagógica según las necesidades de cada estudiante.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ERASMUS+ SECTION WITH CALCULATOR -->
+    <section id="erasmus" class="py-20 bg-navy-800 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-brand-gold/20 text-brand-gold font-bold text-xs rounded-full uppercase tracking-widest border border-brand-gold/30">
+                    Proyectos Internacionales
+                </span>
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mt-3">Programa Erasmus+</h2>
+                <p class="mt-4 text-slate-300">
+                    Abrimos las puertas de Europa a nuestro alumnado a través de movilidades de aprendizaje, intercambios culturales e inmersiones lingüísticas.
+                </p>
+            </div>
+
+            <!-- Destinos e Intercambios Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-navy-700/80 p-8 rounded-2xl border border-navy-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🇫🇷</span>
+                        <h3 class="text-xl font-bold text-white">Intercambio con Francia (Salon-de-Provence)</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                        Programa de estancia recíproca con acogida familiar, asistencia a clases en el instituto francés asociado e inmersión lingüística en el idioma francés.
+                    </p>
+                    <span class="text-xs bg-brand-blue/30 text-blue-300 font-semibold px-3 py-1 rounded-md border border-blue-400/30">Alumnado de ESO / Bachillerato</span>
+                </div>
+
+                <div class="bg-navy-700/80 p-8 rounded-2xl border border-navy-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🇩🇪</span>
+                        <h3 class="text-xl font-bold text-white">Movilidades en Alemania</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                        Proyectos de colaboración educativa enfocados en la cultura, desarrollo sostenible y la mejora del idioma inglés/alemán en un entorno multinacional.
+                    </p>
+                    <span class="text-xs bg-brand-blue/30 text-blue-300 font-semibold px-3 py-1 rounded-md border border-blue-400/30">Alumnado seleccionado</span>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE CALCULATOR -->
+            <div class="bg-white text-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-8">
+                        <span class="text-brand-blue font-extrabold text-xs uppercase tracking-widest">Simulador Oficial</span>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-navy-700">Calculadora de Baremación Erasmus+</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mt-2">Calcula la puntuación estimada de tu candidatura para la asignación de plazas.</p>
+                    </div>
+
+                    <form id="erasmus-form" class="space-y-6" onsubmit="event.preventDefault(); calculateErasmusScore();">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Nota media -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">1. Expediente Académico (Nota Media: 1 a 10)</label>
+                                <input type="number" id="nota-media" min="1" max="10" step="0.1" value="7.5" required
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none font-semibold">
+                                <span class="text-[11px] text-slate-400 mt-1 block">Aporta hasta el 40% del total.</span>
+                            </div>
+
+                            <!-- Nivel Idioma -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">2. Nivel de Idioma (Inglés/Francés/Alemán)</label>
+                                <select id="nivel-idioma" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none font-semibold bg-white">
+                                    <option value="1">Sin acreditación especial / A1 (1 pt)</option>
+                                    <option value="2.5" selected>Nivel A2 / Asignatura Aprobada (2.5 pts)</option>
+                                    <option value="3.5">Nivel B1 Certificado (3.5 pts)</option>
+                                    <option value="4">Nivel B2 o superior Certificado (4 pts)</option>
+                                </select>
+                                <span class="text-[11px] text-slate-400 mt-1 block">Aporta hasta el 30% del total.</span>
+                            </div>
+
+                            <!-- Informe Conducta / Docente -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">3. Valoración del Equipo Docente</label>
+                                <select id="eval-docente" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none font-semibold bg-white">
+                                    <option value="3" selected>Excelente / Muy Favorable (3 pts)</option>
+                                    <option value="2">Favorable / Actitud Correcta (2 pts)</option>
+                                    <option value="1">Suficiente (1 pt)</option>
+                                </select>
+                                <span class="text-[11px] text-slate-400 mt-1 block">Conducta, autonomía y responsabilidad.</span>
+                            </div>
+
+                            <!-- Compromiso Acogida -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">4. Compromiso de Acogida Recíproca</label>
+                                <select id="compromiso-acogida" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none font-semibold bg-white">
+                                    <option value="1" selected>Sí, la familia puede acoger (1 pt)</option>
+                                    <option value="0">No es posible acoger en casa (0 pts)</option>
+                                </select>
+                                <span class="text-[11px] text-slate-400 mt-1 block">Requisito preferente en programas de intercambio.</span>
+                            </div>
+                        </div>
+
+                        <!-- Button & Output -->
+                        <div class="pt-4 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100">
+                            <button type="submit" class="w-full md:w-auto px-8 py-3.5 bg-brand-gold hover:bg-brand-goldHover text-navy-900 font-extrabold rounded-xl shadow-md transition-all">
+                                <i class="fa-solid fa-calculator mr-2"></i>Calcular Puntuación
+                            </button>
+
+                            <div id="result-box" class="w-full md:w-auto p-4 bg-navy-50 rounded-xl border border-navy-100 text-center md:text-right">
+                                <span class="text-xs text-slate-500 uppercase font-bold block">Puntuación Estimada</span>
+                                <span id="score-display" class="text-3xl font-black text-brand-blue">-- / 10 pts</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS & EXTRACURRICULAR SECTION -->
+    <section id="actividades" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Vida Escolar Activa</h2>
+                <p class="text-3xl font-extrabold text-navy-700 sm:text-4xl">Proyectos y Actividades Extracurriculares</p>
+                <p class="mt-4 text-slate-600">Fomentando el talento, la creatividad y el bienestar de la comunidad educativa.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: La Laguna Educa -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-masks-theater"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-navy-700">Talleres "La Laguna Educa"</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                            Actividades gratuidas impartidas en horario de tarde para el desarrollo artístico e interactivo de nuestros alumnos.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                                <span class="font-bold text-navy-700 text-sm block">💃 Baile Moderno</span>
+                                <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>Lunes y Miércoles: 14:30 - 16:00 h</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                                <span class="font-bold text-navy-700 text-sm block">🎭 Taller de Teatro</span>
+                                <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>Martes y Jueves: 14:30 - 16:00 h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Radio IES Padre Anchieta -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-podcast"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-navy-700">Radio IES Padre Anchieta</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                            Nuestra emisora y taller de podcasts donde el alumnado trabaja la expresión oral, noticias e investigación.
+                        </p>
+
+                        <!-- Simulated Audio Player Component -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-500 block mb-1">Último Podcast Emitido:</span>
+                            <span class="text-sm font-bold text-navy-700 block mb-3">Episodio 12: Entrevista sobre Proyectos Erasmus+</span>
+                            <audio id="radio-player" class="w-full h-8" controls>
+                                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                                Tu navegador no soporta el reproductor de audio.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Periódico y En Familia -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-navy-700">Periódico & "En Familia"</h3>
+                        </div>
+                        <div class="space-y-4 text-sm text-slate-600">
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                                <h4 class="font-bold text-navy-700">📰 Periódico Saludable</h4>
+                                <p class="text-xs text-slate-500 mt-1">Publicación periódica realizada por alumnos para promover hábitos de vida sana y deporte.</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                                <h4 class="font-bold text-navy-700">👨‍👩‍👧 Espacio "En Familia"</h4>
+                                <p class="text-xs text-slate-500 mt-1">Talleres y charlas formativas dedicadas a padres, madres y tutores para la convivencia digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECRETARIA & ADMISIONES SECTION -->
+    <section id="secretaria" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-brand-blue font-bold text-xs uppercase tracking-widest">Gestión Académica</span>
+                        <h2 class="text-3xl font-extrabold text-navy-700 mt-2 mb-4">Secretaría y Trámites Digitales</h2>
+                        <p class="text-slate-600 leading-relaxed mb-6 text-sm">
+                            Realiza tus trámites escolares, consulta de calificaciones y gestión de la escolarización de forma ágil e intuitiva.
+                        </p>
+
+                        <div class="space-y-4">
+                            <a href="https://www.gobiernodecanarias.org/educacion/pincel-ekade/" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-brand-blue hover:bg-blue-50/50 transition-all group">
+                                <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-lg flex items-center justify-center text-xl font-bold group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-700">App Familias / Pincel Ekade</h4>
+                                    <p class="text-xs text-slate-500">Consulta faltas, boletines de notas y comunicados oficiales.</p>
+                                </div>
+                            </a>
+
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-brand-gold hover:bg-amber-50/50 transition-all cursor-pointer" onclick="openModal()">
+                                <div class="w-12 h-12 bg-amber-100 text-brand-goldHover rounded-lg flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-700">Impresos y Autorizaciones</h4>
+                                    <p class="text-xs text-slate-500">Haz clic aquí para ver formularios de matrícula y permisos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admision Timeline / Info Box -->
+                    <div class="bg-navy-700 text-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-bold text-brand-gold mb-4"><i class="fa-regular fa-calendar-check mr-2"></i>Calendario de Admisión</h3>
+                        <p class="text-xs text-slate-300 mb-6">Fechas de referencia para el proceso de matriculación (Gobierno de Canarias):</p>
+
+                        <ol class="relative border-l border-slate-600 space-y-6 text-xs">
+                            <li class="ml-4">
+                                <div class="absolute w-3 h-3 bg-brand-gold rounded-full -left-[6.5px] border border-navy-700"></div>
+                                <time class="font-bold text-slate-400">Abril - Mayo</time>
+                                <p class="font-semibold text-white mt-0.5">Presentación de solicitudes de plaza (ESO, Bachillerato y FP).</p>
+                            </li>
+                            <li class="ml-4">
+                                <div class="absolute w-3 h-3 bg-slate-400 rounded-full -left-[6.5px] border border-navy-700"></div>
+                                <time class="font-bold text-slate-400">Junio</time>
+                                <p class="font-semibold text-white mt-0.5">Publicación de listas provisionales y baremación.</p>
+                            </li>
+                            <li class="ml-4">
+                                <div class="absolute w-3 h-3 bg-slate-400 rounded-full -left-[6.5px] border border-navy-700"></div>
+                                <time class="font-bold text-slate-400">Julio</time>
+                                <p class="font-semibold text-white mt-0.5">Formalización oficial de matrícula del alumnado admitido.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & LOCATION SECTION -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Ubicación y Atención</h2>
+                <p class="text-3xl font-extrabold text-navy-700 sm:text-4xl">¿Dónde Encontrarnos?</p>
+                <p class="mt-4 text-slate-600">Estamos a tu disposición para resolver dudas, coordinar visitas o realizar consultas.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info & Form -->
+                <div class="space-y-8">
+                    <!-- Info Badges -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-location-dot text-brand-blue text-xl mb-2"></i>
+                            <h4 class="font-bold text-navy-700 text-sm">Dirección</h4>
+                            <p class="text-xs text-slate-600 mt-1">Calle San Antonio, s/n<br>38201 San Cristóbal de La Laguna, Tenerife</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-phone text-brand-blue text-xl mb-2"></i>
+                            <h4 class="font-bold text-navy-700 text-sm">Teléfonos</h4>
+                            <p class="text-xs text-slate-600 mt-1">922 25 10 03<br>922 25 08 26 / 922 47 78 36</p>
+                        </div>
+                    </div>
+
+                    <!-- Email info -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-envelope text-brand-blue text-xl mb-2"></i>
+                        <h4 class="font-bold text-navy-700 text-sm">Correos Electrónicos Oficiales</h4>
+                        <p class="text-xs text-slate-600 mt-1 font-mono">38002802@gobiernodecanarias.org</p>
+                        <p class="text-xs text-slate-600 font-mono">38002818@gobiernodecanarias.org</p>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
+                        <h4 class="font-bold text-navy-700 text-base">Enviar un Mensaje a Secretaría</h4>
+                        <div>
+                            <input type="text" placeholder="Nombre completo" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-brand-blue outline-none">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Correo electrónico" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-brand-blue outline-none">
+                        </div>
+                        <div>
+                            <textarea rows="3" placeholder="Escribe aquí tu consulta..." required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-brand-blue outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-navy-700 hover:bg-navy-800 text-white font-bold rounded-lg text-sm transition-colors">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Google Maps Frame -->
+                <div class="h-full min-h-[350px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <iframe 
+                        title="Ubicación IES Padre Anchieta"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.039869680327!2d-16.3195!3d28.4815!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c49c634b07f82e5%3A0x6b77242c73041697!2sCalle%20San%20Antonio%2C%20San%20Crist%C3%B3bal%20de%20La%20Laguna%2C%20Santa%20Cruz%20de%20Tenerife!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-slate-400 py-12 border-t border-navy-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8 text-xs">
+                <div>
+                    <span class="text-white font-bold text-base block mb-3">IES Padre Anchieta</span>
+                    <p class="leading-relaxed">
+                        Centro Público dependiente de la Consejería de Educación, Formación Profesional, Actividad Física y Deportes del Gobierno de Canarias.
+                    </p>
+                </div>
+                <div>
+                    <span class="text-white font-bold text-base block mb-3">Enlaces de Interés</span>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.gobiernodecanarias.org/educacion/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Consejería de Educación de Canarias</a></li>
+                        <li><a href="https://www.gobiernodecanarias.org/educacion/pincel-ekade/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Portal Pincel Ekade</a></li>
+                        <li><a href="#erasmus" class="hover:text-white transition-colors">Erasmus+ Canarias</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="text-white font-bold text-base block mb-3">Localización</span>
+                    <p>Calle San Antonio, s/n</p>
+                    <p>38201 San Cristóbal de La Laguna</p>
+                    <p class="mt-2">Tenerife, Islas Canarias, España</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-navy-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; IES Padre Anchieta. Todos los derechos reservados.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-slate-300">Aviso Legal</a>
+                    <a href="#" class="hover:text-slate-300">Política de Privacidad</a>
+                    <a href="#" class="hover:text-slate-300">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FOR DOCUMENTS -->
+    <div id="doc-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">
+                &times;
+            </button>
+            <h3 class="text-xl font-bold text-navy-700 mb-4">Descarga de Formularios</h3>
+            <div class="space-y-3 text-sm">
+                <div class="p-3 bg-slate-50 rounded-lg flex justify-between items-center">
+                    <span>Impreso de Matrícula General</span>
+                    <button onclick="simulateDownload('Matricula_General.pdf')" class="text-brand-blue font-bold hover:underline">PDF</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-lg flex justify-between items-center">
+                    <span>Autorización Uso de Imagen / Salidas</span>
+                    <button onclick="simulateDownload('Autorizacion_Salidas.pdf')" class="text-brand-blue font-bold hover:underline">PDF</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-lg flex justify-between items-center">
+                    <span>Solicitud de Plaza Erasmus+</span>
+                    <button onclick="simulateDownload('Solicitud_Erasmus.pdf')" class="text-brand-blue font-bold hover:underline">PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTION LOGIC -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Tabs switching logic
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+
+            // Reset tab button states
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-500');
+            });
+
+            // Show selected content and highlight active tab button
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            document.getElementById(`content-${tabId}`).classList.add('block');
+            
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        // Erasmus Score Calculation Logic
+        function calculateErasmusScore() {
+            const nota = parseFloat(document.getElementById('nota-media').value) || 0;
+            const nivelIdioma = parseFloat(document.getElementById('nivel-idioma').value) || 0;
+            const evalDocente = parseFloat(document.getElementById('eval-docente').value) || 0;
+            const compromiso = parseFloat(document.getElementById('compromiso-acogida').value) || 0;
+
+            // Score formula: (Nota media / 10)*4 + nivelIdioma + evalDocente + compromiso (Total max ~ 10)
+            const notaPart = (Math.min(Math.max(nota, 0), 10) / 10) * 4;
+            let total = notaPart + nivelIdioma + evalDocente + compromiso;
+            
+            // Normalize to max 10
+            total = Math.min(total, 10).toFixed(2);
+
+            document.getElementById('score-display').innerText = `${total} / 10 pts`;
+        }
+
+        // Modal triggers
+        function openModal() {
+            document.getElementById('doc-modal').classList.remove('hidden');
+            document.getElementById('doc-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('doc-modal').classList.add('hidden');
+            document.getElementById('doc-modal').classList.remove('flex');
+        }
+
+        function simulateDownload(filename) {
+            alert(`Iniciando descarga ficticia del documento: ${filename}`);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! El formulario ha sido enviado a la Secretaría del IES Padre Anchieta.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
+
+# 
+██╗░░░██╗███╗░░██╗░█████╗░  ██████╗░░█████╗░░██████╗██╗░░░██╗██████╗░░█████╗░
+██║░░░██║████╗░██║██╔══██╗  ██╔══██╗██╔══██╗██╔════╝██║░░░██║██╔══██╗██╔══██╗
+██║░░░██║██╔██╗██║███████║  ██████╦╝███████║╚█████╗░██║░░░██║██████╔╝███████║
+██║░░░██║██║╚████║██╔══██║  ██╔══██╗██╔══██║░╚═══██╗██║░░░██║██╔══██╗██╔══██║
+╚██████╔╝██║░╚███║██║░░██║  ██████╦╝██║░░██║██████╔╝╚██████╔╝██║░░██║██║░░██║
+░╚═════╝░╚═╝░░╚══╝╚═╝░░╚═╝  ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝
